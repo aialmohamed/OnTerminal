@@ -8,8 +8,9 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
+using ArduinoApp01;
 
-namespace ArduinoApp01
+namespace ArduinoApp01.Utils
 {
     internal class DataHandler : IDataHandler
     {
