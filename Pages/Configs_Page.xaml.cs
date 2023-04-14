@@ -16,6 +16,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.Win32;
+using ArduinoApp01.Utils;
 
 namespace ArduinoApp01
 {

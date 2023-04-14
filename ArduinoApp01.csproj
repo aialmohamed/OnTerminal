@@ -20,19 +20,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="DataHandler.cs">
+    <Compile Update="Utils\DataHandler.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="IConfigrationsSettings.cs">
+    <Compile Update="Utils\IConfigrationsSettings.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="IDataHandler.cs">
+    <Compile Update="Pages\IDataHandler.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="MainWindow.xaml.cs">
+    <Compile Update="Pages\MainWindow.xaml.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Settings.cs">
+    <Compile Update="Utils\Settings.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
