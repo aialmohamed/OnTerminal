@@ -1,0 +1,112 @@
+﻿<Window x:Class="ArduinoApp01.Configs_Page"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArduinoApp01"
+        mc:Ignorable="d"
+        Title="COM Port Panel" Height="450" Width="1024" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid RenderTransformOrigin="0.516,0.575">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="300*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="211*"/>
+            <ColumnDefinition Width="472*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Control Panel" Margin="10,10,74,90" Grid.RowSpan="2" FontWeight="Bold" FontStyle="Italic">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Ports" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Content="Baudrate" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Margin="6,0,0,0"/>
+                <Label Content="Stop Bits" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Margin="0,8,0,0"/>
+                <Label Content="Parity Bits" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Margin="0,9,0,0"/>
+                <ComboBox x:Name="CBox_Ports" Grid.Column="1" Margin="13,0,0,0" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Loaded="CBox_Ports_Loaded" />
+                <ComboBox x:Name="CBox_BaudRate" Grid.Column="1" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="120" Loaded="CBox_BaudRate_Loaded" />
+                <ComboBox x:Name="CBox_DataBits" Grid.Column="1" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="120" Loaded="CBox_DataBits_Loaded" />
+                <ComboBox x:Name="CBox_StopBits" Grid.Column="1" HorizontalAlignment="Left" Margin="13,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120" Loaded="CBox_StopBits_Loaded" />
+                <ComboBox x:Name="CBox_ParityBits" Grid.Column="1" HorizontalAlignment="Left" Margin="13,11,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120" Loaded="CBox_ParityBits_Loaded"/>
+                <Label Content="Data Bits" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Handler" Grid.Row="1" Margin="10,208,74,19" Grid.RowSpan="2" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="OpenPort_btn" Content="Open" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Height="20" Width="50" Click="OpenPort_btn_Click"/>
+                <Button x:Name="ClosePort_btn" Content="Close" HorizontalAlignment="Left" Margin="20,51,0,0" VerticalAlignment="Top" Width="50" Height="20" Click="ClosePort_btn_Click" Grid.RowSpan="2"/>
+                <ProgressBar x:Name="ProgressBar_1" HorizontalAlignment="Left" Height="20" Margin="23,30,0,0" VerticalAlignment="Top" Width="170" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Label Content="Port Status :" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Width="87" Grid.Column="1"/>
+                <Label x:Name="Label_StatusPort" Content="Off" HorizontalAlignment="Center" Height="24" Margin="0,47,0,0" VerticalAlignment="Top" Width="59" Grid.Column="1" Grid.RowSpan="2"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Sent Data" Grid.ColumnSpan="2" Margin="247,24,408,14" Grid.RowSpan="2">
+            <Grid>
+                <TextBox x:Name="TBox_SentDataWindow" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="144" HorizontalAlignment="Left" Width="333" KeyDown="TBox_SentDataWindow_KeyDown" VerticalScrollBarVisibility="Auto"  TextChanged="TBox_SentDataWindow_TextChanged"/>
+                <GroupBox Header="" Margin="10,149,10,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="83*"/>
+                            <ColumnDefinition Width="134*"/>
+                            <ColumnDefinition Width="109*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="Clear_Screan_Btn" Content="Clear data" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="18" Width="44" FontSize="8" Grid.Row="1" Click="Clear_Screan_Btn_Click"/>
+                        <Button x:Name="SendData_Btn" Content="Send data" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="18" Width="44" Click="SendData_Btn_Click" FontSize="8"/>
+                        <CheckBox x:Name="CHBox_UsingBtn" Grid.Column="1" Content="Using Button" HorizontalAlignment="Center" Height="14" Margin="0,14,0,0" VerticalAlignment="Top" Width="70" FontSize="8" FontStyle="Italic" FontWeight="Bold" Checked="CHBox_UsingBtn_Checked" Unchecked="CHBox_UsingBtn_Unchecked"/>
+                        <CheckBox x:Name="CHBox_UsingEnter" Grid.Column="1" Content="Using Enter" HorizontalAlignment="Center" Height="14" Margin="0,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" FontSize="8" FontStyle="Italic" FontWeight="Bold" Checked="CHBox_UsingEnter_Checked" Unchecked="CHBox_UsingEnter_Unchecked" />
+                        <CheckBox x:Name="CHBox_WriteLine" Grid.Column="2" Content="WriteLine" HorizontalAlignment="Left" Height="18" Margin="19,13,0,0" VerticalAlignment="Top" Width="80" FontSize="8" FontWeight="Bold" FontStyle="Italic"/>
+                        <CheckBox x:Name="CHBox_Write" Grid.Column="2" Content="Write" HorizontalAlignment="Left" Height="18" Margin="22,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="74" FontSize="8" FontStyle="Italic" FontWeight="Bold"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+        </GroupBox>
+        <GroupBox Grid.Column="1" HorizontalAlignment="Left" Height="321" Header="Received Data" Margin="329,24,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="357">
+            <Grid>
+                <GroupBox HorizontalAlignment="Center" Height="153" Header="" Margin="0,10,0,0" VerticalAlignment="Top" Width="301">
+                    <TextBox x:Name="TBox_ReceivedData" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Width="271"/>
+                </GroupBox>
+                <GroupBox HorizontalAlignment="Center" Height="100" Header="" Margin="0,179,0,0" VerticalAlignment="Top" Width="301">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150*"/>
+                            <ColumnDefinition Width="139*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BtnClear_recevied_Data" Content="Clear Data" HorizontalAlignment="Center" Height="48" Margin="0,15,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="84" Click="BtnClear_recevied_Data_Click"/>
+                        <Button x:Name ="Btn_SaveDatato_txt" Grid.Column="1" Content="Save" HorizontalAlignment="Center" Height="48" Margin="0,15,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="84" Click="Btn_SaveDatato_txt_Click"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="Btn_Exit2" Grid.Column="1" Content="Exit" HorizontalAlignment="Left" Height="38" Margin="600,9,0,0" Grid.Row="2" VerticalAlignment="Top" Width="60" Click="Btn_Exit2_Click"/>
+        <Button x:Name="Btn_GoToPlotter" Grid.Column="1" Content="Plotter" HorizontalAlignment="Left" Height="38" Margin="508,9,0,0" Grid.Row="2" VerticalAlignment="Top" Width="62" Click="Btn_GoToPlotter_Click"/>
+
+    </Grid>
+</Window>
