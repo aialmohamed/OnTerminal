@@ -268,13 +268,18 @@ namespace ArduinoApp01
 
         private void Btn_SaveDatato_txt_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Text files (*.txt)|*.txt";
-            saveFileDialog.Title = "Save Received Data";
-            if(saveFileDialog.ShowDialog() == true)
+            Task.Run(() =>
             {
-                dataHandler.SaveToFile(saveFileDialog.FileName);
-            }
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Text files (*.txt)|*.txt";
+                saveFileDialog.Title = "Save Received Data";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    dataHandler.SaveToFile(saveFileDialog.FileName);
+                }
+
+            });
+
         }
 
         private void BtnClear_recevied_Data_Click(object sender, RoutedEventArgs e)
