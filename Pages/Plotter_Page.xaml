@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Plotter_Page" Height="450" Width="800">
     <Grid>
-        <Grid>
+        <Grid RenderTransformOrigin="0.728,0.35">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition/>
@@ -17,19 +17,40 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Grid.Column="1" HorizontalAlignment="Center" Height="269" Header="GroupBox" VerticalAlignment="Center" Width="513">
+            <GroupBox Grid.Column="1" HorizontalAlignment="Center" Height="269" Header="Chart" VerticalAlignment="Center" Width="513">
                 <Grid>
                     <oxy:PlotView x:Name="PV_Serial" Width="481" Margin="0,10,10,10" HorizontalAlignment="Right" />
                 </Grid>
             </GroupBox>
-            <GroupBox HorizontalAlignment="Center" Height="269" Header="GroupBox" VerticalAlignment="Center" Width="247">
-                <Grid/>
+            <GroupBox HorizontalAlignment="Center" Height="269" Header="Status" VerticalAlignment="Center" Width="247">
+                <Grid>
+                    <Button x:Name="Btn_CheckConeection" Content="Check for Connections" HorizontalAlignment="Left" Height="39" Margin="18,24,0,0" VerticalAlignment="Top" Width="207" Click="Btn_CheckConeection_Click"/>
+                    <Label  Content="Connection status  :" HorizontalAlignment="Left" Height="31" Margin="18,82,0,0" VerticalAlignment="Top" Width="118"/>
+                    <Label Content="Sync staus              :" HorizontalAlignment="Left" Height="28" Margin="18,118,0,0" VerticalAlignment="Top" Width="118"/>
+                    <Label Content="Data status             :" HorizontalAlignment="Left" Height="32" Margin="18,159,0,0" VerticalAlignment="Top" Width="118"/>
+                    <Label x:Name="Label_ConnectionState" Content="---"  HorizontalAlignment="Left" Height="23" Margin="155,82,0,0" VerticalAlignment="Top" Width="70" FontStyle="Italic" FontWeight="Bold"/>
+                    <Label x:Name="Label_SyncState" Content="---" HorizontalAlignment="Left" Height="28" Margin="155,118,0,0" VerticalAlignment="Top" Width="70" FontWeight="Bold" FontStyle="Italic"/>
+                    <Label x:Name="Label_DataState" Content="---" HorizontalAlignment="Left" Height="26" Margin="155,159,0,0" VerticalAlignment="Top" Width="70" FontWeight="Bold" FontStyle="Italic"/>
+                    <Button x:Name="Btn_Sync" Content="Sync" HorizontalAlignment="Left" Height="39" Margin="10,197,0,0" VerticalAlignment="Top" Width="62" Click="Btn_Sync_Click"/>
+                    <Button x:Name="Btn_CloseConection" Content="Close" HorizontalAlignment="Left" Height="39" Margin="163,197,0,0" VerticalAlignment="Top" Width="62" Click="Btn_CloseConection_Click"/>
+                </Grid>
             </GroupBox>
-            <GroupBox HorizontalAlignment="Center" Height="125" Header="GroupBox" VerticalAlignment="Top" Width="247" Margin="0,289,0,0" Grid.RowSpan="2">
-                <Grid/>
+            <GroupBox HorizontalAlignment="Center" Height="125" Header="Data" VerticalAlignment="Top" Width="247" Margin="0,289,0,0" Grid.RowSpan="2">
+                <Grid>
+                    <Label Content="Data Length :" HorizontalAlignment="Left" Height="31" Margin="30,10,0,0" VerticalAlignment="Top" Width="95"/>
+                    <Label Content="00" HorizontalAlignment="Left" Height="31" Margin="130,10,0,0" VerticalAlignment="Top" Width="60" FontWeight="Bold" FontStyle="Italic"/>
+                    <Button x:Name="Btn_Saveplotter" Content="Save" HorizontalAlignment="Left" Height="31" Margin="10,51,0,0" VerticalAlignment="Top" Width="68"/>
+                    <CheckBox Content="Plot" HorizontalAlignment="Left" Height="16" Margin="115,51,0,0" VerticalAlignment="Top" Width="75"/>
+                    <CheckBox Content="Only data" HorizontalAlignment="Left" Height="20" Margin="115,72,0,0" VerticalAlignment="Top" Width="75"/>
+                </Grid>
             </GroupBox>
-            <GroupBox Grid.Column="1" HorizontalAlignment="Left" Height="125" Header="GroupBox" Margin="10,289,0,0" VerticalAlignment="Top" Width="502" Grid.RowSpan="2">
-                <Grid/>
+            <GroupBox Grid.Column="1" HorizontalAlignment="Left" Height="125" Header="Controls" Margin="10,289,0,0" VerticalAlignment="Top" Width="502" Grid.RowSpan="2">
+                <Grid>
+                    <Button x:Name="Btn_Back" Content="Back" HorizontalAlignment="Left" Height="43" Margin="319,20,0,0" VerticalAlignment="Top" Width="70"/>
+                    <Button x:Name="Btn_ExitPlotter" Content="Exit" HorizontalAlignment="Left" Height="43" Margin="410,20,0,0" VerticalAlignment="Top" Width="70"/>
+                    <Button x:Name="Btn_StartPlotting" Content="Start" HorizontalAlignment="Left" Height="31" Margin="23,20,0,0" VerticalAlignment="Top" Width="222"/>
+                    <Button x:Name="Btn_StopPlotting" Content="Stop" HorizontalAlignment="Left" Height="29" Margin="23,63,0,0" VerticalAlignment="Top" Width="222"/>
+                </Grid>
             </GroupBox>
         </Grid>
     </Grid>
